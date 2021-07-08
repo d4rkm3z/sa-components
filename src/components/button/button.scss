@@ -1,6 +1,15 @@
-$primaryColor: #2584FF;
+$bg: #2584FF;
+$typo: #fff;
+$bg-hover: #0091FF;
+$typo-hover: #fff;
 
 .button {
-  background-color: $primaryColor;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  background-color: $bg;
+  color: $typo;
   width: 178px;
+  border-radius: 2px;
+  padding: 10px;
  }
