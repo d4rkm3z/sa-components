@@ -1,8 +1,14 @@
-import React from "react";
-import Button from "./components/button/Button";
+import React from 'react'
+import Button from './components/button/Button'
+import Accordion from './components/Accordion/Accordion'
 
 function App() {
-  return <Button/>;
+  return (
+    <>
+      <Button />
+      <Accordion />
+    </>
+  )
 }
 
-export default App;
+export default App
