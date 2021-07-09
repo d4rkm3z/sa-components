@@ -1,15 +1,33 @@
-$bg: #2584FF;
-$typo: #fff;
-$bg-hover: #0091FF;
-$typo-hover: #fff;
+$blue: #2584ff;
+$white: #fff;
+$blue-hover: #0091ff;
 
-.button {
+.btn {
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
-  background-color: $bg;
-  color: $typo;
+  font-weight: 400;
+  font-style: normal;
+  background-color: $blue;
+  color: $white;
   width: 178px;
   border-radius: 2px;
   padding: 10px;
- }
+  cursor: pointer;
+}
+.primary {
+  background-color: $blue;
+  color: $white;
+}
+.primary:hover {
+  background-color: $blue-hover;
+}
+.secondary {
+  background-color: transparent;
+  color: $blue;
+  border: 1px solid $blue;
+}
+.secondary:hover {
+  color: $blue-hover;
+  border: 1px solid $blue-hover;
+}
