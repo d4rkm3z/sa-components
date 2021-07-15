@@ -13,6 +13,7 @@ module.exports = {
     '@typescript-eslint/no-non-null-assertion': 'off',
     'react-hooks/exhaustive-deps': 'error',
     '@typescript-eslint/camelcase': 'off',
+    'no-console': 'off',
   },
   overrides: [
     {
@@ -24,6 +25,17 @@ module.exports = {
     {
       files: ['*.ts', '*.tsx'],
       rules: {
+        '@typescript-eslint/naming-convention': [
+          'error',
+          {
+            selector: 'interface',
+            format: ['PascalCase'],
+            custom: {
+              regex: '^I[A-Z]',
+              match: true,
+            },
+          },
+        ],
         'simple-import-sort/imports': [
           'error',
           {
