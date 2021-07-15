@@ -1,12 +1,12 @@
 import React from 'react';
 import classnames from 'classnames';
 
-import './dropdown.scss';
+import styles from './DropdownList.module.scss';
 
 interface IDropdownItemProps {
   className?: string;
 }
 
 export const DropdownList = ({ className }: IDropdownItemProps) => (
-  <div className={classnames('dropdown', className)} />
+  <div className={classnames(styles.root, className)} />
 );
