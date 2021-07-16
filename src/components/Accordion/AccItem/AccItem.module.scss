@@ -9,20 +9,20 @@
   max-height: 568px;
 }
 
-.AccItem__header {
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.AccItem__title {
+.title {
   font-weight: 700;
   font-size: 32px;
   line-height: 130%;
   color: #002033;
 }
 
-.AccItem__icon {
+.icon {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -35,13 +35,13 @@
   transition: all 300ms ease-in-out;
 }
 
-.AccItem__icon.clickedIcon {
+.clickedIcon {
   background: transparent;
   border: 1px solid rgba(37, 132, 255, 1);
   transition: all 300ms ease-in-out;
 }
 
-.AccItem__content {
+.content {
   height: 0;
   opacity: 0;
   display: flex;
@@ -57,11 +57,11 @@
   }
 }
 
-.AccItem__content.show {
+.show {
   height: 50px;
   opacity: 1;
 }
 
-.AccItem__content.show .AccItem__icon {
+.show .icon {
   background: white;
 }

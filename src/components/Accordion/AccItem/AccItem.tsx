@@ -1,7 +1,8 @@
 import React from 'react'
-import './AccItem.scss'
+import classes from './AccItem.module.scss'
 import { BsPlus } from 'react-icons/bs'
 import { BsX } from 'react-icons/bs'
+import classNames from 'classnames'
 
 interface AccItemProps {
   text: string
@@ -12,11 +13,15 @@ interface AccItemProps {
 
 function AccItem({ text, title, active, toggle }: AccItemProps) {
   return (
-    <li className="AccItem">
-      <div className="AccItem__header">
-        <p className="AccItem__title">{title}</p>
+    <li className={classes.AccItem}>
+      <div className={classes.header}>
+        <p className={classes.title}>{title}</p>
         <div
-          className={(active === title ? 'clickedIcon' : '') + ' AccItem__icon'}
+          className={
+            active === title
+              ? classNames(classes.clickedIcon, classes.icon)
+              : classes.icon
+          }
           onClick={() => toggle(title)}
         >
           {active === title ? (
@@ -26,7 +31,13 @@ function AccItem({ text, title, active, toggle }: AccItemProps) {
           )}
         </div>
       </div>
-      <div className={(active === title ? 'show' : '') + ' AccItem__content'}>
+      <div
+        className={
+          active === title
+            ? classNames(classes.show, classes.content)
+            : classes.content
+        }
+      >
         <p>{text}</p>
       </div>
     </li>
