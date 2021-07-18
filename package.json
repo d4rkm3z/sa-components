@@ -35,6 +35,7 @@
     "@types/react-dom": "^17.0.0",
     "@typescript-eslint/parser": "^4.28.3",
     "eslint-plugin-simple-import-sort": "^7.0.0",
+    "react-refresh": "^0.10.0",
     "stylelint-config-standard": "^22.0.0"
   },
   "browserslist": {
@@ -47,6 +48,18 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "eslintConfig": {
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
     ]
   }
 }
