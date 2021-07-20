@@ -1,13 +1,13 @@
-import React from 'react';
-import classnames from 'classnames';
+import React from "react";
+import classnames from "classnames";
 
-import styles from './Button.module.scss';
+import styles from "./Button.module.scss";
 
 interface IBtnItemProps {
   text: string;
-  className?: string;
+  className?: string | any;
 }
 
-export const Button = ({className, text}: IBtnItemProps) => (
-  <div className={classnames(styles.Button, className)}>{text}</div>
+export const Button = ({ className, text }: IBtnItemProps) => (
+  <div className={classnames(styles.Button, styles[className])}>{text}</div>
 );
