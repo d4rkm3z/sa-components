@@ -5,7 +5,7 @@ import styles from "./Button.module.scss";
 
 interface IBtnItemProps {
   text: string;
-  className?: string | any;
+  className: string;
 }
 
 export const Button = ({ className, text }: IBtnItemProps) => (
