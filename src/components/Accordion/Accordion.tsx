@@ -1,34 +1,39 @@
-import React, { useState } from 'react'
-import AccItem from './AccItem/AccItem'
+import React, { useState } from "react";
+import AccItem from "./AccItem/AccItem";
+
+import "./Accordion.scss";
 
 function Accordion() {
-  const [active, setActive] = useState('')
+  const [active, setActive] = useState("");
 
   const accordions = [
     {
       id: 1,
-      title: 'Текст вопроса 1?',
-      text: 'Никаких. Сервис подскажет, что нужно сделат чтобы провести анализ и правильно разобраться в его результатах.',
+      question: "Текст вопроса 1?",
+      answer:
+        "Никаких. Сервис подскажет, что нужно сделат чтобы провести анализ и правильно разобраться в его результатах.",
     },
     {
       id: 2,
-      title: 'Текст вопроса 2?',
-      text: 'Никаких. Сервис подскажет, что нужно сделат чтобы провести анализ и правильно разобраться в его результатах.',
+      question: "Текст вопроса 2?",
+      answer:
+        "Никаких. Сервис подскажет, что нужно сделат чтобы провести анализ и правильно разобраться в его результатах.",
     },
     {
       id: 3,
-      title: 'Текст вопроса 3?',
-      text: 'Никаких. Сервис подскажет, что нужно сделат чтобы провести анализ и правильно разобраться в его результатах.',
+      question: "Текст вопроса 3?",
+      answer:
+        "Никаких. Сервис подскажет, что нужно сделат чтобы провести анализ и правильно разобраться в его результатах.",
     },
-  ]
+  ];
 
   const toggle = (title: string) => {
     if (title === active) {
-      setActive('')
+      setActive("");
     } else {
-      setActive(title)
+      setActive(title);
     }
-  }
+  };
 
   return (
     <ul className="Accordion">
@@ -36,15 +41,15 @@ function Accordion() {
         return (
           <AccItem
             key={item.id}
-            title={item.title}
-            text={item.text}
+            question={item.question}
+            answer={item.answer}
             active={active}
             toggle={toggle}
           />
-        )
+        );
       })}
     </ul>
-  )
+  );
 }
 
-export default Accordion
+export default Accordion;
