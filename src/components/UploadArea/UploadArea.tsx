@@ -1,28 +1,28 @@
-import React, { useRef, useState, ChangeEvent } from 'react'
-import classes from './UploadArea.module.scss'
-import { delay } from './UploadFunction'
-import Loader from './Loader/Loader'
+import React, { ChangeEvent, useRef, useState } from "react";
+import classNames from "classnames";
+import Loader from "./Loader/Loader";
+import { delay } from "./UploadFunction";
 
-import classNames from 'classnames'
+import classes from "./UploadArea.module.scss";
 
-interface UploadAreaProps {
-  acceptTypes: string[]
-  maxSizeOfFileInBytes: number
+interface IUploadAreaProps {
+  acceptTypes: string[];
+  maxSizeOfFileInBytes: number;
 }
 
-function UploadArea({ acceptTypes, maxSizeOfFileInBytes }: UploadAreaProps) {
-  const triggeredInput = useRef<HTMLInputElement>(null)
-  const [onDrag, setOnDrag] = useState(false)
-  const [size, setSize] = useState(false)
-  const [download, setDownload] = useState(false)
-  const [uploading, setUploading] = useState(false)
-  const [fileName, setFileName] = useState('')
-  const [fileSize, setFileSize] = useState(0)
+function UploadArea({ acceptTypes, maxSizeOfFileInBytes }: IUploadAreaProps) {
+  const triggeredInput = useRef<HTMLInputElement>(null);
+  const [onDrag, setOnDrag] = useState(false);
+  const [size, setSize] = useState(false);
+  const [download, setDownload] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const [fileName, setFileName] = useState("");
+  const [fileSize, setFileSize] = useState(0);
 
   const options = {
     multiple: false,
-    accept: acceptTypes.join(','),
-  }
+    accept: acceptTypes.join(","),
+  };
 
   // function typeCheck(elem: string) {
   //   const types = acceptTypes
@@ -36,62 +36,62 @@ function UploadArea({ acceptTypes, maxSizeOfFileInBytes }: UploadAreaProps) {
   // acceptTypes.some(typeCheck)
 
   const typeCheck = (fileName: string) => {
-    const types = acceptTypes
-    let valid = false
+    const types = acceptTypes;
+    let valid = false;
     types.forEach((elem) => {
-      if (valid) return valid
-      valid = fileName.includes(elem)
-    })
-    return valid
-  }
+      if (valid) return valid;
+      valid = fileName.includes(elem);
+    });
+    return valid;
+  };
 
   async function fetchFiles() {
-    console.log('Start uploading...')
+    console.log("Start uploading...");
 
-    await delay(4000)
-    setDownload(true)
+    await delay(4000);
+    setDownload(true);
 
-    console.log('Done! File uploaded')
+    console.log("Done! File uploaded");
   }
 
   const clearState = () => {
-    setOnDrag(false)
-    setSize(false)
-    setDownload(false)
-    setUploading(false)
-    setFileName('')
-    setFileSize(0)
-  }
+    setOnDrag(false);
+    setSize(false);
+    setDownload(false);
+    setUploading(false);
+    setFileName("");
+    setFileSize(0);
+  };
   // ф-я триггер для кастомной кнопки, при клике на нее срабатывает ф-я у input
-  const openTrigger = () => triggeredInput.current?.click()
+  const openTrigger = () => triggeredInput.current?.click();
 
   // пользователь через input выбирает файл, срабатывает данная функция
   const changeHandler = ({ target }: ChangeEvent<HTMLInputElement>) => {
     if (target?.files?.length) {
       if (target.files[0].size < maxSizeOfFileInBytes) {
-        setUploading(true)
-        setFileName(target.files[0].name)
-        setFileSize(Math.round(target.files[0].size / 1048576))
-        setSize(false)
-        fetchFiles()
+        setUploading(true);
+        setFileName(target.files[0].name);
+        setFileSize(Math.round(target.files[0].size / 1048576));
+        setSize(false);
+        fetchFiles();
       } else {
-        setSize(true)
+        setSize(true);
       }
     }
-  }
+  };
 
   // Две функции, которые обрабатывают события наведения на область загрузки и выхода из нее
   // onDrag отвечает за поведение фона при drag and drop, затемняя его при наведении
 
   const onDragStartHandler = (e: React.DragEvent<HTMLDivElement>) => {
-    e.preventDefault()
-    setOnDrag(true)
-  }
+    e.preventDefault();
+    setOnDrag(true);
+  };
 
   const onDragLeaveHandler = (e: React.DragEvent<HTMLDivElement>) => {
-    e.preventDefault()
-    setOnDrag(false)
-  }
+    e.preventDefault();
+    setOnDrag(false);
+  };
 
   // Обработка drag & drop после того, как пользователь отпустил файл области
   // setSize - отвечает за отрисовку области загрузки при проверке файла на его размер
@@ -101,27 +101,29 @@ function UploadArea({ acceptTypes, maxSizeOfFileInBytes }: UploadAreaProps) {
   // UploadFunction() - обособленная функция, которая делает запрос на сервер и отвечает за отрисовку компонента в момент загрузки файла
 
   const onDropHandler = (e: React.DragEvent<HTMLDivElement>) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    let files = [...e.dataTransfer.files]
-    if (files[0].size < maxSizeOfFileInBytes && typeCheck(files[0].name)) {
-      if (files.length === 1) {
-        setSize(false)
-        setUploading(true)
-        setFileSize(Math.round(files[0].size / 1048576))
-        setFileName(files[0].name)
+    let files = [...e.dataTransfer.files];
+    if (
+      files[0].size < maxSizeOfFileInBytes &&
+      typeCheck(files[0].name) &&
+      files.length === 1
+    ) {
+      setSize(false);
+      setUploading(true);
+      setFileSize(Math.round(files[0].size / 1048576));
+      setFileName(files[0].name);
 
-        fetchFiles()
+      fetchFiles();
 
-        const formData = new FormData()
-        formData.append('file', files[0])
-      }
+      const formData = new FormData();
+      formData.append("file", files[0]);
     } else {
-      setSize(true)
+      setSize(true);
     }
 
-    setOnDrag(false)
-  }
+    setOnDrag(false);
+  };
 
   return (
     <>
@@ -188,14 +190,16 @@ function UploadArea({ acceptTypes, maxSizeOfFileInBytes }: UploadAreaProps) {
           </button>
           {size ? (
             <p className={classes.sizeWarning}>
-              Размер файла не должен превышать 300 Мб, а доступные расширения -
-              {` ${options.accept}`}. Выберите другой файл и повторите загрузку
+              Размер файла не должен превышать{" "}
+              {`${maxSizeOfFileInBytes / 1048576} `}
+              Мб, а доступные расширения -{` ${options.accept}`}. Выберите
+              другой файл и повторите загрузку
             </p>
           ) : null}
         </div>
       )}
     </>
-  )
+  );
 }
 
-export default UploadArea
+export default UploadArea;
