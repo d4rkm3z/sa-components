@@ -1,6 +1,5 @@
 import React from "react";
-import { BsPlus } from "react-icons/bs";
-import { BsX } from "react-icons/bs";
+import { BsPlus, BsX } from "react-icons/bs";
 import classNames from "classnames";
 
 import classes from "./AccItem.module.scss";
@@ -12,7 +11,12 @@ interface IAccItemProps {
   toggle: (title: string) => void;
 }
 
-function AccItem({ answer, question, active, toggle }: IAccItemProps) {
+export const AccItem = ({
+  answer,
+  question,
+  active,
+  toggle,
+}: IAccItemProps) => {
   return (
     <li className={classes.AccItem}>
       <div className={classes.header}>
@@ -43,6 +47,4 @@ function AccItem({ answer, question, active, toggle }: IAccItemProps) {
       </div>
     </li>
   );
-}
-
-export default AccItem;
+};
