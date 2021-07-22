@@ -1,3 +1,25 @@
-.root {
+.Dropdown {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  font-family: Golos;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 140%;
+  color: rgba(0, 32, 51, 0.6);
 
+  select {
+    border: 1px solid rgba(0, 66, 105, 0.28);
+    box-sizing: border-box;
+    border-radius: 2px;
+    padding: 8px 12px;
+    margin: 4px 0px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+  }
 }

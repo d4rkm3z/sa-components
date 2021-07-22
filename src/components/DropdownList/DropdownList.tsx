@@ -18,11 +18,11 @@ export function DropdownList({
     return <option value={option}>{option}</option>;
   });
   return (
-    <>
+    <div className={styles.Dropdown}>
       <label htmlFor={formName}>{labelHeader}</label>
       <select name={formName} id={formName}>
         {options}
       </select>
-    </>
+    </div>
   );
 }
