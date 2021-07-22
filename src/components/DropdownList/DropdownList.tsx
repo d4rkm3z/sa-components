@@ -1,12 +1,28 @@
-import React from 'react';
-import classnames from 'classnames';
+import React from "react";
+import classnames from "classnames";
 
-import styles from './DropdownList.module.scss';
+import styles from "./DropdownList.module.scss";
 
 interface IDropdownItemProps {
-  className?: string;
+  formName: string;
+  labelHeader: string;
+  optionsArray: string[];
 }
 
-export const DropdownList = ({ className }: IDropdownItemProps) => (
-  <div className={classnames(styles.root, className)} />
-);
+export function DropdownList({
+  formName,
+  labelHeader,
+  optionsArray,
+}: IDropdownItemProps) {
+  let options = optionsArray.map(option => {
+    return <option value={option}>{option}</option>;
+  });
+  return (
+    <>
+      <label htmlFor={formName}>{labelHeader}</label>
+      <select name={formName} id={formName}>
+        {options}
+      </select>
+    </>
+  );
+}
