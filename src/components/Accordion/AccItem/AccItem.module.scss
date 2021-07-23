@@ -1,10 +1,12 @@
+@import "variables";
+
 .AccItem {
   width: 100%;
   max-width: 832px;
   margin: 0 auto;
   padding: 56px 10px;
-  border-top: 1px solid rgba(0, 65, 102, 0.2);
-  border-bottom: 1px solid rgba(0, 65, 102, 0.2);
+  border-top: 1px solid $border-bg;
+  border-bottom: 1px solid $border-bg;
   list-style-type: none;
   max-height: 568px;
 }
@@ -16,10 +18,11 @@
 }
 
 .title {
+  margin: 0;
   font-weight: 700;
   font-size: 32px;
   line-height: 130%;
-  color: #002033;
+  color: $primary;
 }
 
 .icon {
@@ -28,7 +31,7 @@
   align-items: center;
   width: 40px;
   height: 40px;
-  background: rgba(37, 132, 255, 1);
+  background: $decorative;
   border-radius: 50%;
   cursor: pointer;
   color: white;
@@ -37,31 +40,31 @@
 
 .clickedIcon {
   background: transparent;
-  border: 1px solid rgba(37, 132, 255, 1);
+  border: 1px solid $decorative;
   transition: all 300ms ease-in-out;
 }
 
 .content {
+  overflow: visible;
   height: 0;
   opacity: 0;
   display: flex;
-  overflow: hidden;
   transition: all 400ms ease-in-out;
-  margin-top: 20px;
-  p {
+
+  &_text {
+    margin: 0;
     max-width: 688px;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 160%;
-    color: rgba(0, 32, 51, 0.6);
+    @include font($fs16);
+    color: $secondary;
   }
 }
 
 .show {
-  height: 50px;
+  height: 6em;
   opacity: 1;
+  margin-top: 20px;
 }
 
 .show .icon {
-  background: white;
+  background: $default-bg;
 }

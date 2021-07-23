@@ -43,7 +43,7 @@ export const AccItem = ({
             : classes.content
         }
       >
-        <p>{answer}</p>
+        <p className={classes.content_text}>{answer}</p>
       </div>
     </li>
   );

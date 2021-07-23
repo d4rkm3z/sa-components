@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { AccItem } from "./AccItem/AccItem";
 
-import "./Accordion.scss";
-
 interface IAccordionProps {
   items: { id?: number; question: string; answer: string }[];
 }
@@ -23,7 +21,7 @@ export const Accordion = ({ items }: IAccordionProps) => {
       {items.map((item) => {
         return (
           <AccItem
-            key={item.id}
+            key={`${item.question}-id`}
             question={item.question}
             answer={item.answer}
             active={active}
