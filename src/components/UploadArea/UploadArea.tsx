@@ -10,7 +10,10 @@ interface IUploadAreaProps {
   maxSizeOfFileInBytes: number;
 }
 
-function UploadArea({ acceptTypes, maxSizeOfFileInBytes }: IUploadAreaProps) {
+export const UploadArea = ({
+  acceptTypes,
+  maxSizeOfFileInBytes,
+}: IUploadAreaProps) => {
   const triggeredInput = useRef<HTMLInputElement>(null);
   const [onDrag, setOnDrag] = useState(false);
   const [size, setSize] = useState(false);
@@ -148,7 +151,7 @@ function UploadArea({ acceptTypes, maxSizeOfFileInBytes }: IUploadAreaProps) {
           <div className={classes.uploading_file_info}>
             <div className={classes.uploading_file_container}>
               <Loader />
-              <div>
+              <div className={classes.uploading_file_container_div}>
                 <p className={classes.file_name}>{fileName}</p>
                 <p className={classes.file_size}>{fileSize} Мб</p>
               </div>
@@ -200,6 +203,4 @@ function UploadArea({ acceptTypes, maxSizeOfFileInBytes }: IUploadAreaProps) {
       )}
     </>
   );
-}
-
-export default UploadArea;
+};

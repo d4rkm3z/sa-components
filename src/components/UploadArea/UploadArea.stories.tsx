@@ -1,14 +1,15 @@
-/* eslint-disable import/no-anonymous-default-export */
 import React from "react";
-
-import UploadArea from "./UploadArea";
+import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { UploadArea } from "./UploadArea";
 
 export default {
   title: "Upload Area/Upload Area",
   component: UploadArea,
-};
+} as ComponentMeta<typeof UploadArea>;
 
-const Template = (args) => <UploadArea {...args} />;
+const Template: ComponentStory<typeof UploadArea> = (args) => (
+  <UploadArea {...args} />
+);
 
 export const ExcelCSV300Mb = Template.bind({});
 ExcelCSV300Mb.args = {

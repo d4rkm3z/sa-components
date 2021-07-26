@@ -1,79 +1,4 @@
-/*Обнуление*/
-* {
-  padding: 0;
-  margin: 0;
-  border: 0;
-}
-*,
-*:before,
-*:after {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-:focus,
-:active {
-  outline: none;
-}
-a:focus,
-a:active {
-  outline: none;
-}
-nav,
-footer,
-header,
-aside {
-  display: block;
-}
-html,
-body {
-  height: 100%;
-  width: 100%;
-  font-size: 100%;
-  line-height: 1;
-  font-size: 14px;
-  -ms-text-size-adjust: 100%;
-  -moz-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-}
-input,
-button,
-textarea {
-  font-family: inherit;
-}
-input::-ms-clear {
-  display: none;
-}
-button {
-  cursor: pointer;
-}
-button::-moz-focus-inner {
-  padding: 0;
-  border: 0;
-}
-a,
-a:visited {
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: none;
-}
-ul li {
-  list-style: none;
-}
-img {
-  vertical-align: top;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: inherit;
-  font-weight: inherit;
-}
-/*--------------------*/
+@import "variables";
 
 .UploadArea {
   position: relative;
@@ -84,7 +9,7 @@ h6 {
   width: 680px;
   height: 280px;
   margin: 0 auto;
-  border: 2px dashed rgba(0, 65, 102, 0.2);
+  border: 2px dashed $border-bg;
   border-radius: 2px;
   transition: all 0.3s ease-in-out;
 }
@@ -99,22 +24,21 @@ h6 {
 }
 
 .text {
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 160%;
-  color: rgba(0, 32, 51, 0.6);
+  @include font($fs14);
+  color: $secondary;
   text-align: center;
   max-width: 250px;
+  margin: 0;
   margin-bottom: 20px;
 }
 
 .btn {
+  @include font($fs14);
   border-radius: 2px;
-  color: #002033;
-  font-size: 14px;
   background: #ffffff;
   padding: 10px 20px 10px 20px;
   border: solid #d9d9d9 1px;
+  cursor: pointer;
 }
 
 .input {
@@ -129,6 +53,7 @@ h6 {
   font-size: 12px;
   line-height: 140%;
   color: #eb3333;
+  margin: 0;
 }
 
 // succesful download
@@ -180,35 +105,39 @@ h6 {
 }
 
 .status_text {
-  font-weight: 400;
-  font-size: 14px;
+  @include font($fs14);
   line-height: 120%;
   color: rgba(0, 0, 0, 0.65);
 }
 
 .file_name {
-  font-size: 14px;
+  @include font($fs14);
   line-height: 120%;
-  color: #002033;
+  margin: 0;
+  margin-bottom: 5px;
 }
 
 .file_size {
   font-size: 12px;
   line-height: 120%;
-  color: rgba(0, 32, 51, 0.6);
+  color: $secondary;
+  margin: 0;
 }
 
 .deleteFile {
   width: 12px;
   height: 13px;
   background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  border: 0;
 }
 
 .uploading_file_container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  > div {
+  > .uploading_file_container_div {
     margin-left: 17px;
   }
 }
