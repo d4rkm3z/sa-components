@@ -38,7 +38,7 @@ export function Dropdown({
   handleChange,
 }: IDropdownItemProps) {
   return (
-    <div className={active ? styles.Dropdown : styles.Unactive}>
+    <div className={active ? styles.Dropdown : styles.Disabled}>
       <label htmlFor={dropdownName}>{labelText}</label>
       <Select
         components={{ DropdownIndicator }}
