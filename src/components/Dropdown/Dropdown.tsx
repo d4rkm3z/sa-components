@@ -1,24 +1,25 @@
 import React, { Component } from "react";
 import Select from "react-select";
 
-import styles from "./DropdownList.module.scss";
+import styles from "./Dropdown.module.scss";
 
 interface IDropdownItemProps {
-  formName: string;
-  labelHeader: string;
+  dropdownName: string;
+  labelText: string;
   optionsArray: { value: string; label: string }[];
   handleChange: (arg: any) => void;
 }
-export function DropdownList({
-  formName,
-  labelHeader,
+export function Dropdown({
+  dropdownName,
+  labelText,
   optionsArray,
   handleChange,
 }: IDropdownItemProps) {
   return (
     <div className={styles.Dropdown}>
-      <label htmlFor={formName}>{labelHeader}</label>
+      <label htmlFor={dropdownName}>{labelText}</label>
       <Select
+        name={dropdownName}
         defaultValue={optionsArray[0]}
         options={optionsArray}
         onChange={handleChange}

@@ -1,22 +1,22 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { DropdownList } from "./DropdownList";
+import { Dropdown } from "./Dropdown";
 
 export default {
-  title: "Example/DropdownList",
-  component: DropdownList,
+  title: "Example/Dropdown",
+  component: Dropdown,
   argTypes: { handleChange: { action: "selected" } },
-} as ComponentMeta<typeof DropdownList>;
+} as ComponentMeta<typeof Dropdown>;
 
-const Template: ComponentStory<typeof DropdownList> = (args) => (
-  <DropdownList {...args} />
+const Template: ComponentStory<typeof Dropdown> = (args) => (
+  <Dropdown {...args} />
 );
 
 export const Default = Template.bind({});
 Default.args = {
-  formName: "type",
-  labelHeader: "Тип анализа",
+  dropdownName: "type",
+  labelText: "Тип анализа",
   optionsArray: [
     { value: "ABC", label: "ABC анализ" },
     { value: "another", label: "Другой анализ" },
-  ],
+  ]
 };
