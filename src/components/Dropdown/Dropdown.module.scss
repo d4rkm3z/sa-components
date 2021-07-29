@@ -10,6 +10,10 @@
   line-height: 140%;
   color: rgba(0, 32, 51, 0.6);
 }
+.Unactive {
+  opacity: 0.3;
+  pointer-events: none;
+}
 .Select {
   font-family: Roboto;
   font-style: normal;
@@ -18,6 +22,6 @@
   line-height: 24px;
   color: #002033;
 }
-.CaretIcon{
+.CaretIcon {
   margin-right: 7px;
 }

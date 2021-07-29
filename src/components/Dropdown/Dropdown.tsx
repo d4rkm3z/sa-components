@@ -4,6 +4,7 @@ import caret from "./assets/caret.svg";
 import styles from "./Dropdown.module.scss";
 
 interface IDropdownItemProps {
+  active: boolean;
   dropdownName: string;
   labelText: string;
   optionsArray: { value: string; label: string }[];
@@ -13,7 +14,7 @@ const DropdownIndicator = (props: any) => {
   return (
     components.DropdownIndicator && (
       <components.DropdownIndicator {...props}>
-        <img src={caret} alt='caret icon' className={styles.CaretIcon} />
+        <img src={caret} alt="caret icon" className={styles.CaretIcon} />
       </components.DropdownIndicator>
     )
   );
@@ -30,13 +31,14 @@ const rewrittenStyles = {
   }),
 };
 export function Dropdown({
+  active,
   dropdownName,
   labelText,
   optionsArray,
   handleChange,
 }: IDropdownItemProps) {
   return (
-    <div className={styles.Dropdown}>
+    <div className={active ? styles.Dropdown : styles.Unactive}>
       <label htmlFor={dropdownName}>{labelText}</label>
       <Select
         components={{ DropdownIndicator }}

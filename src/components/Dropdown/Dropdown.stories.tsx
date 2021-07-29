@@ -13,6 +13,7 @@ const Template: ComponentStory<typeof Dropdown> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
+  active: true,
   dropdownName: "type",
   labelText: "Тип анализа",
   optionsArray: [
